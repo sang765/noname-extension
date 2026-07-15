@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Titanium Extension</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="options">
+  <h1>Titanium Extension</h1>
+
+  <section>
+    <h2>Downloads</h2>
+    <div class="row">
+      <label for="enabled">Redirect downloads</label>
+      <input type="checkbox" id="enabled">
+    </div>
+    <p class="hint">Automatically redirect downloads to the download manager. You can still manually send links via the context menu when off.</p>
+    <div class="row">
+      <label for="handoffMode">Handoff style</label>
+      <select id="handoffMode">
+        <option value="confirm">Confirm (recommended)</option>
+        <option value="auto">Direct</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="skipExtensions">Skip file extensions</label>
+      <input type="text" id="skipExtensions" placeholder="crx, apk">
+    </div>
+    <p class="hint">Downloads whose filename ends in one of these stay in the browser instead of being redirected to the download manager. Comma separated list.</p>
+  </section>
+
+  <section>
+    <h2>Download manager</h2>
+    <div class="row">
+      <label for="manager">Application preset</label>
+      <select id="manager"></select>
+    </div>
+    <div class="row">
+      <label for="packageName">Android package ID</label>
+      <input type="text" id="packageName" list="knownPackages">
+      <datalist id="knownPackages"></datalist>
+    </div>
+    <p class="hint">This must match the installed variant of the application exactly (e.g. <code>idm.internet.download.manager.plus</code> for 1DM+). The intent only runs when resolved to the correct application.</p>
+    <div class="row" id="customModeRow" hidden>
+      <label for="customMode">Intent style</label>
+      <select id="customMode">
+        <option value="view">VIEW (URL as intent data)</option>
+        <option value="send">SEND (URL as EXTRA_TEXT)</option>
+      </select>
+    </div>
+    <div class="row">
+      <label for="forwardCookies">Forward cookies and headers</label>
+      <input type="checkbox" id="forwardCookies">
+    </div>
+  </section>
+
+  <section>
+    <h2>Extension marketplaces</h2>
+    <div class="row">
+      <label for="operaUrl">Opera Add-ons</label>
+      <span class="field">
+        <input type="text" id="operaUrl" placeholder="https://addons.opera.com/en/extensions/details/...">
+        <button id="operaGet">Get</button>
+      </span>
+    </div>
+    <div class="row">
+      <label for="edgeUrl">Microsoft Edge Add-ons</label>
+      <span class="field">
+        <input type="text" id="edgeUrl" placeholder="https://microsoftedge.microsoft.com/addons/detail/...">
+        <button id="edgeGet">Get</button>
+      </span>
+    </div>
+    <div class="row">
+      <label for="cwsUrl">Chrome Web Store</label>
+      <span class="field">
+        <input type="text" id="cwsUrl" placeholder="https://chromewebstore.google.com/detail/...">
+        <button id="cwsGet">Get</button>
+      </span>
+    </div>
+    <p class="hint">Enter the extension's marketplace page URL to download the extension file. If no install prompt appears, you can alternatively unzip the extension file and load it unpacked.</p>
+    <p id="getError" class="hint" hidden>Not a recognized marketplace URL.</p>
+    <div class="row">
+      <label for="patchOpera">Patch Opera Add-ons page</label>
+      <input type="checkbox" id="patchOpera">
+    </div>
+    <div class="row">
+      <label for="patchEdge">Patch Microsoft Edge Add-ons page</label>
+      <input type="checkbox" id="patchEdge">
+    </div>
+  </section>
+
+  <section>
+    <h2>Developer options</h2>
+    <div class="row">
+      <label for="devMode">Show log window</label>
+      <input type="checkbox" id="devMode">
+    </div>
+    <div id="devTools" hidden>
+      <div class="row">
+        <button id="clearLog">Clear</button>
+      </div>
+      <pre id="devLog">(empty)</pre>
+    </div>
+  </section>
+
+  <p id="saved">Saved</p>
+
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

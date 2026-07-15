@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+  attestations: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Package
+        run: |
+          VERSION=$(sed -n 's/.*"version": "\([^"]*\)".*/\1/p' manifest.json | head -1)
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+          mkdir -p out/titanium
+          rsync -a \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='out/' \
+            --exclude='titanium.zip' \
+            --exclude='README.md' \
+            --exclude='LICENSE' \
+            --exclude='.gitignore' \
+            --exclude='.DS_Store' \
+            ./ out/titanium/
+          cd out && zip -r titanium.zip titanium
+
+      - name: Publish
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: v${{ env.VERSION }}
+          files: out/titanium.zip
+
+      - name: Attest
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: out/titanium.zip

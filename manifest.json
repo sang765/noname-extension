@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Titanium",
+  "version": "0.0.1",
+  "description": "This extension offers additional features for Chromium on Android, including support for securely installing extensions from alternative marketplaces, using external download managers, enhanced dark mode, and more.",
+  "permissions": [
+    "downloads",
+    "tabs",
+    "cookies",
+    "contextMenus",
+    "storage",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "opera_ua", "enabled": true, "path": "marketplaces/opera.json" },
+      { "id": "edge_ua", "enabled": true, "path": "marketplaces/edge.json" }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://microsoftedge.microsoft.com/addons/*"],
+      "js": ["common.js", "marketplaces/edge-install.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Titanium"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "incognito": "split"
+}
