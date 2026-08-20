@@ -67,6 +67,60 @@ wireGet(els.cwsUrl, els.cwsGet, CRX_MARKETPLACES.cws);
 wireGet(els.edgeUrl, els.edgeGet, CRX_MARKETPLACES.edge, getCrx);
 wireGet(els.operaUrl, els.operaGet, CRX_MARKETPLACES.opera, getCrx);
 
+const fileEls = {
+  input: document.getElementById("fileInput"),
+  name: document.getElementById("fileName"),
+  button: document.getElementById("fileButton"),
+  status: document.getElementById("fileStatus"),
+};
+
+function selectedFile() {
+  return (fileEls.input.files && fileEls.input.files[0]) || null;
+}
+
+function setFileStatus(text) {
+  fileEls.status.hidden = !text;
+  fileEls.status.textContent = text || "";
+}
+
+function refreshFileUi() {
+  const f = selectedFile();
+  fileEls.name.value = f ? f.name : "";
+  fileEls.button.textContent = f ? "Go" : "Set";
+}
+
+fileEls.input.addEventListener("change", () => {
+  setFileStatus("");
+  refreshFileUi();
+});
+
+fileEls.name.addEventListener("click", () => fileEls.input.click());
+
+fileEls.button.addEventListener("click", async () => {
+  const f = selectedFile();
+  if (!f) {
+    fileEls.input.click();
+    return;
+  }
+  fileEls.button.disabled = true;
+  try {
+    setFileStatus("Preparing extension…");
+    const res = await installExtensionFile(await f.arrayBuffer(), f.name);
+    setFileStatus(
+      res.ok
+        ? "Follow the prompt to add the extension."
+        : "Failed: " + (res.error || "download failed")
+    );
+  } catch (e) {
+    logEvent(`file install failed: ${e.message}`);
+    setFileStatus("Failed: " + e.message);
+  } finally {
+    fileEls.button.disabled = false;
+  }
+});
+
+refreshFileUi();
+
 for (const [key, mgr] of Object.entries(MANAGERS)) {
   const opt = document.createElement("option");
   opt.value = key;

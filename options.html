@@ -58,24 +58,34 @@
   <section>
     <h2>Extension marketplaces</h2>
     <div class="row">
+      <label for="fileName">Install from file</label>
+      <span class="field">
+        <input type="file" id="fileInput" accept=".zip,.crx,application/zip,application/x-chrome-extension" hidden>
+        <input type="text" id="fileName" placeholder="None selected" readonly>
+        <button id="fileButton">Set</button>
+      </span>
+    </div>
+    <p class="hint">Select a zip or crx file to install. Files are signed on-device.</p>
+    <p id="fileStatus" class="hint" hidden></p>
+    <div class="row">
       <label for="operaUrl">Opera Add-ons</label>
       <span class="field">
         <input type="text" id="operaUrl" placeholder="https://addons.opera.com/en/extensions/details/...">
-        <button id="operaGet">Get</button>
+        <button id="operaGet">Go</button>
       </span>
     </div>
     <div class="row">
       <label for="edgeUrl">Microsoft Edge Add-ons</label>
       <span class="field">
         <input type="text" id="edgeUrl" placeholder="https://microsoftedge.microsoft.com/addons/detail/...">
-        <button id="edgeGet">Get</button>
+        <button id="edgeGet">Go</button>
       </span>
     </div>
     <div class="row">
       <label for="cwsUrl">Chrome Web Store</label>
       <span class="field">
         <input type="text" id="cwsUrl" placeholder="https://chromewebstore.google.com/detail/...">
-        <button id="cwsGet">Get</button>
+        <button id="cwsGet">Go</button>
       </span>
     </div>
     <p class="hint">Enter the extension's marketplace page URL to download the extension file. If no install prompt appears, you can alternatively unzip the extension file and load it unpacked.</p>
