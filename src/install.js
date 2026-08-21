@@ -2,7 +2,6 @@
 
 const crx = decodeURIComponent(location.hash.slice(1));
 const status = document.getElementById("status");
-
 if (!/^https?:/.test(crx)) {
   status.textContent = "Nothing to get.";
 } else {
