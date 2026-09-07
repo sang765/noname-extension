@@ -97,9 +97,10 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
 });
 
 function shouldRedirect(item, settings) {
-  if (!settings.enabled) return "disabled in settings";
   if (handledIds.has(item.id)) return "already handled";
   const url = item.finalUrl || item.url;
+  // never intercept the extension's own downloads (CRX blob install, etc.)
+  if (url.startsWith("blob:chrome-extension://")) return "own extension download";
   let protocol = "";
   try { protocol = new URL(url).protocol; } catch {}
   if (protocol !== "http:" && protocol !== "https:") return `non-http scheme ${protocol}`;
@@ -110,6 +111,7 @@ function shouldRedirect(item, settings) {
     .map((s) => s.trim().toLowerCase().replace(/^\./, ""))
     .filter(Boolean);
   if (skip.includes(fileExtension(url))) return "extension in skip list";
+  if (!settings.enabled) return "disabled in settings";
   return "";
 }
 
