@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Titanium",
+  "name": "NoName",
   "version": "0.0.1",
   "description": "This extension offers additional features for Chromium on Android, including support for securely installing extensions from alternative marketplaces, using external download managers, enhanced dark mode, and more.",
   "permissions": [
@@ -32,7 +32,17 @@
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Titanium"
+    "default_title": "NoName",
+    "default_icon": {
+      "16": "icon/icon16.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon/icon16.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
   },
   "options_ui": {
     "page": "options.html",
