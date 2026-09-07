@@ -29,12 +29,12 @@ jobs:
           tag_name: v${{ env.VERSION }}
           name: v${{ env.VERSION }}
           files: |
-            dist/titanium.zip
-            dist/titanium.crx
+            noname.zip
+            noname.crx
 
       - name: Attest
         uses: actions/attest-build-provenance@v4
         with:
           subject-path: |
-            dist/titanium.zip
-            dist/titanium.crx
+            noname.zip
+            noname.crx

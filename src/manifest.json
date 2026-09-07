@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NoName",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This extension offers additional features for Chromium on Android, including support for securely installing extensions from alternative marketplaces, using external download managers, enhanced dark mode, and more.",
   "permissions": [
     "downloads",
