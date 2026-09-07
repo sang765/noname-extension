@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>Titanium</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoName</title>
+<link rel="stylesheet" href="md3-tokens.css">
+<link rel="stylesheet" href="md3-components.css">
 </head>
 <body class="popup">
-  <div class="row">
-    <label for="enabled">Redirect downloads</label>
-    <input type="checkbox" id="enabled">
+  <header class="md3-header">
+    <h1 class="md3-header__title">NoName Extension</h1>
+  </header>
+  
+  <section class="md3-section">
+    <div class="md3-list-item">
+      <div class="md3-list-item__content">
+        <span class="md3-list-item__text">Redirect downloads</span>
+      </div>
+      <label class="md3-switch">
+        <input type="checkbox" id="enabled">
+        <span class="md3-switch__track"></span>
+      </label>
+    </div>
+    
+    <div class="md3-list-item">
+      <div class="md3-list-item__content">
+        <span class="md3-list-item__text">Sending to</span>
+        <span class="md3-list-item__secondary" id="target">(unset)</span>
+      </div>
+    </div>
+  </section>
+  
+  <div class="md3-actions">
+    <button class="md3-button md3-button--text" id="openOptions">Options</button>
   </div>
-  <div class="row">
-    <span class="muted">Sending to</span>
-    <span id="target"></span>
-  </div>
-  <button id="openOptions">Options</button>
+  
   <script src="common.js"></script>
   <script src="popup.js"></script>
 </body>

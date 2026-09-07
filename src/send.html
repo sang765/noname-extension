@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Send download</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="md3-tokens.css">
+<link rel="stylesheet" href="md3-components.css">
 </head>
 <body class="send">
   <main>
-    <div id="name"></div>
-    <div id="url"></div>
-    <button id="send" class="primary"></button>
-    <div><a href="#" id="cancel">Cancel</a></div>
-    <div id="hint" hidden>If nothing opened, the download manager application was not detected. Check the package ID and the intent format configured in extension options.</div>
+    <div class="md3-card md3-card--elevated">
+      <div id="name"></div>
+      <div id="url"></div>
+      <button id="send" class="md3-button md3-button--filled" style="width: 100%;"></button>
+      <div><a href="#" id="cancel" class="md3-list-item__secondary">Cancel</a></div>
+      <div id="hint" class="md3-list-item__secondary" hidden>If nothing opened, the download manager application was not detected. Check the package ID and the intent format configured in extension options.</div>
+    </div>
   </main>
   <script src="common.js"></script>
   <script src="send.js"></script>
