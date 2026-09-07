@@ -1,14 +1,14 @@
 "use strict";
 
-const BAR_ID = "titanium-crx-bar";
+const BAR_ID = "noname-crx-bar";
 
 const OVERLAY_CSS =
-  "position:fixed;margin:0;box-sizing:border-box;background:#0f6cbd;color:#fff;" +
+  "position:fixed;margin:0;box-sizing:border-box;background:#6750A4;color:#fff;" +
   "font:600 14px system-ui,sans-serif;border:0;border-radius:4px;cursor:pointer;" +
   "display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent";
 const TOPBAR_CSS =
   "position:fixed;left:0;right:0;top:0;bottom:auto;width:100%;max-width:none;margin:0;" +
-  "box-sizing:border-box;padding:14px 20px;background:#0f6cbd;color:#fff;" +
+  "box-sizing:border-box;padding:14px 20px;background:#6750A4;color:#fff;" +
   "font:600 16px system-ui,sans-serif;text-align:center;border:0;cursor:pointer;" +
   "-webkit-tap-highlight-color:transparent";
 

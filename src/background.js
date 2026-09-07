@@ -2,7 +2,7 @@
 
 importScripts("common.js");
 
-const MENU_ID = "titanium-download-link";
+const MENU_ID = "noname-download-link";
 const MENU_TITLE = "Download with download manager";
 
 const handledIds = new Set();

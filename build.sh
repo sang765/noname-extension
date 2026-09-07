@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf dist && mkdir -p dist/titanium
-rsync -a src/ dist/titanium/
-(cd dist/titanium && zip -qr ../titanium.zip .)
-node crx.js dist/titanium.zip dist/titanium.crx
+rm -rf dist && mkdir -p dist/noname
+rsync -a src/ dist/noname/
+(cd dist/noname && zip -qr ../noname.zip .)
+node crx.js dist/noname.zip dist/noname.crx

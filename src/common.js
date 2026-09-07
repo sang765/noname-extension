@@ -68,7 +68,7 @@ const LOG_KEY = "eventLog";
 const LOG_MAX = 500;
 
 async function logEvent(msg) {
-  console.log("[Titanium] " + msg);
+  console.log("[NoName] " + msg);
   try {
     const stamp = new Date().toTimeString().slice(0, 8);
     const { [LOG_KEY]: log = [] } = await chrome.storage.local.get(LOG_KEY);
@@ -76,7 +76,7 @@ async function logEvent(msg) {
     while (log.length > LOG_MAX) log.shift();
     await chrome.storage.local.set({ [LOG_KEY]: log });
   } catch (e) {
-    console.warn("[Titanium] logEvent failed:", e);
+    console.warn("[NoName] logEvent failed:", e);
   }
 }
 
